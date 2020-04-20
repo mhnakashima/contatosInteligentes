@@ -10,9 +10,9 @@ import { UtilsService } from '../../utils/utils.service';
 })
 export class ContactsComponent implements OnInit {
 
-  private users$: User[];
-  private favorites: User[] = [];
-  private searchString: string = '';
+  public users$: User[];
+  public favorites: User[] = [];
+  public searchString: string = '';
   public orderFieldBy = '';
   public orderItem: boolean = true;
   public orderByItem: boolean = true;
@@ -33,7 +33,7 @@ export class ContactsComponent implements OnInit {
     this.favorites = this.userService.getFavorites();
   }
 
-  private addFavorite(user: User): void {
+  public addFavorite(user: User): void {
 
     user.active = !user.active;
 
@@ -52,7 +52,7 @@ export class ContactsComponent implements OnInit {
     this.userService.setFavorites(this.favorites);
   }
 
-  private onSearchItem(): void {
+  public onSearchItem(): void {
     this.router.navigate(['/view', this.searchString]);
   }
 

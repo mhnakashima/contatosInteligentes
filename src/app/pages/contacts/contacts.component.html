@@ -19,12 +19,12 @@
 
             <button [ngClass]="{ 'active' : orderItem}" class="button order no-layout my-2 my-sm-0" type="button"
                 (click)="setArrange('card');">
-                <img src="./../../../assets/images/organize-blocks.png" alt="Organize Blocks" />
+                <img src="./assets/images/organize-blocks.png" alt="Organize Blocks" />
             </button>
 
             <button [ngClass]="{ 'active' : !orderItem}" class="button order no-layout my-2 my-sm-0" type="button"
                 (click)="setArrange('list');">
-                <img src="./../../../assets/images/organize-list.png" alt="Organize List" />
+                <img src="./assets/images/organize-list.png" alt="Organize List" />
             </button>
 
         </form>
@@ -46,7 +46,7 @@
 
                 <div class="card-container">
                     <div class="card-star no-layout">
-                        <img [src]="!favorite.active ? './../../../assets/images/favorite.png' : './../../../assets/images/star.png'"
+                        <img [src]="!favorite.active ? './assets/images/favorite.png' : './assets/images/star.png'"
                             alt="Favorite icon" />
                     </div>
 
@@ -80,7 +80,7 @@
                 *ngFor="let user of users$">
                 <div class="card-container">
                     <button class="card-star no-layout" (click)="addFavorite(user)">
-                        <img [src]="!user.active ? './../../../assets/images/favorite.png' : './../../../assets/images/star.png'"
+                        <img [src]="!user.active ? './assets/images/favorite.png' : './assets/images/star.png'"
                             alt="Favorite icon" />
                     </button>
 

@@ -26,7 +26,6 @@ export class ContactsViewComponent implements OnInit {
   private async initComponent(): Promise<void> {
     this.searchString = this.activatedRoute.snapshot.paramMap.get('name') || '';
 
-
     if (this.searchString !== "") {
 
       this.users$ = <User[]>await this.userService.getUsers().toPromise();
@@ -34,8 +33,6 @@ export class ContactsViewComponent implements OnInit {
       this.user = this.users$.filter((value) => {
         return value.name.toLowerCase() === this.searchString.toLowerCase();
       })[0];
-
-      console.log(this.user);
     }
   }
 }
