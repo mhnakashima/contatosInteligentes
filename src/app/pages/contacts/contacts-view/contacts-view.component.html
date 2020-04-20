@@ -1,0 +1,116 @@
+<div class="holder">
+
+    <div class="container-fluid" *ngIf="this.searchString !== '' && user">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="line">
+                    <div class="contact-avatar">
+                        <div class="contact-avatar-image">
+                            <div class="contact-avatar-image-content"
+                                [ngStyle]="{'background-image': 'url(' + user?.image + ')'}" alt="favorite Image"></div>
+                        </div>
+
+                        <div class="contact-name">
+                            <h2>{{user?.name}}</h2>
+                            <p>Id: {{user?.shortName}}</p>
+                        </div>
+
+                        <div class="contact-created">
+                            Created at: {{user?.created | date :'dd-MM-yyyy' }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid marginTop20px" *ngIf="this.searchString !== '' && user">
+        <div class="row">
+
+            <div class="col-12 col-sm-12 col-lg-8 contact-main">
+
+                <div class="row">
+
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <div class="contact-main-section">
+                                <label class="contact-main-label">Region and Idiom</label>
+                                <h4 class="contact-main-description">{{user?.culture}}</h4>
+                            </div>
+
+                            <div class="contact-main-section">
+                                <label class="contact-main-label">Timezone</label>
+                                <h4 class="contact-main-description">{{user?.created | date : 'dd/MM/yyyy'}}</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-8 contact-main-area">
+                        <div class="card grid">
+                            <div class="contact-main-items user">
+                                <div class="contact-main-user user">
+                                    <img src="./../../../../assets/images/user.png" alt="User Icon">
+                                </div>
+                                <div class="contact-main-file">
+                                    <h3>{{user?.analytics.user.actived}}</h3>
+                                    <p>Usuários Ativos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row marginTop20px">
+
+                    <div class="col-12 col-lg-7 contact-main-area">
+                        <div class="card grid">
+                            <div class="contact-main-items message">
+                                <div class="contact-main-user message">
+                                    <img src="./../../../../assets/images/union.png" alt="Union Icon">
+                                </div>
+                                <div class="contact-main-file">
+                                    <h3>{{user?.analytics.message.received}}</h3>
+                                    <p>Mensagens Recebidas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5 contact-main-area">
+                        <div class="card grid">
+                            <div class="contact-main-items sent">
+                                <div class="contact-main-user sent">
+                                    <img src="./../../../../assets/images/sent.png" alt="Sent Icon">
+                                </div>
+                                <div class="contact-main-file">
+                                    <h3>{{user?.analytics.message.sent}}</h3>
+                                    <p>Mensagens Enviadas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-lg-4 contact-sidebar">
+
+                <div class="contact-info">
+                    <img class="contact-info-image img-responsive" src="./../../../../assets/images/plano.png"
+                        alt="Plan picture" />
+                </div>
+
+                <div class="contact-info">
+                    <h6 class="contact-info-status">Status Account</h6>
+                    <h2 class="contact-info-name">{{user?.plan}}</h2>
+                    <button class="contact-info-update btn btn-info">Update Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="this.searchString === '' || !user">
+        <app-not-found></app-not-found>
+    </div>
+</div>

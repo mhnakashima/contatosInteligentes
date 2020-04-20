@@ -1,0 +1,185 @@
+.card {
+    min-height: 200px;
+    padding: 20px;
+
+    &.grid {
+        display    : grid;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 576px) {
+        margin-bottom: 15px;
+    }
+}
+
+.contact {
+    &-avatar {
+        display: grid;
+
+        grid-template-areas  : "image name created";
+        grid-template-columns: 1fr 9fr 2fr;
+        align-items          : center;
+
+        @media screen and (max-width: 576px) {
+            grid-template-areas  : 
+                "image" 
+                "name" 
+                "created";
+            grid-template-columns: 1fr;
+
+            text-align: center;
+        }
+
+        &-image {
+
+            grid-area : image;
+            text-align: center;
+
+            &-content {
+                display: inline-block;
+
+                height: 64px;
+                width : 64px;
+
+                background-size    : cover;
+                background-position: 50% 50%;
+                border-radius      : 100%;
+            }
+        }
+    }
+
+    &-name {
+        grid-area: name;
+
+        >h2 {
+            margin: 0;
+
+            color: #5A6572;
+        }
+
+        >p {
+            font-size: 14px;
+        }
+    }
+
+    &-created {
+        grid-area: created;
+
+        font-size: 14px;
+    }
+
+    &-main {
+        &-label {
+            margin     : 0px;
+            color      : #5A6572;
+            font-size  : 14px;
+            font-weight: 300;
+        }
+
+        &-description {
+            color    : #5A6572;
+            font-size: 18px;
+        }
+
+        &-items {
+            display              : grid;
+            grid-template-areas  : "mainUser mainName";
+            align-items          : center;
+
+            &.message{
+                grid-template-columns: 2fr 10fr;
+            }
+
+            &.sent{
+                grid-template-columns: 3fr 7fr;
+            }
+
+            &.user{
+                grid-template-columns: 2fr 10fr;
+            }
+        }
+
+        &-file {
+            grid-area: mainName;
+
+            color: #5A6572;
+
+            >h3,
+            >p {
+                margin: 0px;
+            }
+
+            >p {
+                font-size: 14px;
+            }
+        }
+
+        &-user {
+            grid-area: mainUser;
+            height   : 65px;
+            margin   : 0 17px;
+
+            border-radius: 100%;
+            text-align   : center;
+
+            &.message{
+                margin   : 0 10px;
+                background-color: #4DCB7B;
+
+                >img {
+                    padding-top : 17px;
+                    padding-left: 0px;
+                }
+            }
+
+            &.sent {
+                margin   : 0 19px;
+                background-color: #517BF2;
+
+                >img {
+                    padding-top : 17px;
+                    padding-left: 0px;
+                }
+            }
+
+            &.user {
+                background-color: #2CC3D5;
+
+                >img {
+                    padding-top : 15px;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+
+    &-sidebar{
+        display: grid;
+        align-content: center;
+        justify-content: center;
+    }
+
+    &-info{
+
+        text-align: center;
+
+        &-name{
+            text-transform: capitalize;
+        }
+
+        &-status{
+            font-weight: 300;
+        }
+
+        &-name, &-status{
+            margin: 0;
+
+            color: #5A6572;
+            text-align: center;
+        }
+
+        &-update{
+            margin-top: 20px;
+        }
+    }
+}

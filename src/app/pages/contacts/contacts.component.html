@@ -1,0 +1,108 @@
+<div class="holder">
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand">My chatbots</a>
+
+        <form class="form-inline" (submit)="onSearchItem()">
+
+            <input [(ngModel)]='searchString' [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2"
+                type="search" placeholder="Search" aria-label="Search">
+
+            <button class="button btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+
+            <button [ngClass]="{ 'active' : orderByItem}" class="button orderBy btn btn-primary my-2 my-sm-0"
+                type="button" (click)="orderBy('name')">Order By
+                Name</button>
+
+            <button [ngClass]="{ 'active' : !orderByItem}" class="button orderBy btn btn-primary my-2 my-sm-0"
+                type="button" (click)="orderBy('date')">Order By
+                Creation</button>
+
+            <button [ngClass]="{ 'active' : orderItem}" class="button order no-layout my-2 my-sm-0" type="button"
+                (click)="setArrange('card');">
+                <img src="./../../../assets/images/organize-blocks.png" alt="Organize Blocks" />
+            </button>
+
+            <button [ngClass]="{ 'active' : !orderItem}" class="button order no-layout my-2 my-sm-0" type="button"
+                (click)="setArrange('list');">
+                <img src="./../../../assets/images/organize-list.png" alt="Organize List" />
+            </button>
+
+        </form>
+    </nav>
+
+    <!-- Favorites Container -->
+    <div class="container-fluid line" *ngIf="favorites?.length != 0">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-title">
+                    Favorites
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div [ngClass]="{'col-12 col-sm-4 col-md-4 col-lg-2': orderItem , 'col-12' : !orderItem}"
+                *ngFor="let favorite of favorites">
+
+                <div class="card-container">
+                    <div class="card-star no-layout">
+                        <img [src]="!favorite.active ? './../../../assets/images/favorite.png' : './../../../assets/images/star.png'"
+                            alt="Favorite icon" />
+                    </div>
+
+                    <a class="card {{ !orderItem  ? 'list' : ''}}" [routerLink]="['/view', favorite.name]">
+
+                        <div class="card-header">
+                            <div class="card-avatar" [ngStyle]="{'background-image': 'url(' + favorite.image + ')'}"
+                                alt="favorite Image"></div>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{favorite?.name}}</h5>
+                            <p *ngIf="orderItem" class="card-text">{{favorite?.shortName}}</p>
+                        </div>
+
+                        <div class="card-footer itemC" *ngIf=" !orderItem">
+                            <h6 class="card-title">Created at: {{favorite?.created | date :'dd-MM-yyyy'}}</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Users Container -->
+    <div class="container-fluid marginTop20px" *ngIf="users$?.length != 0">
+        <div class="row">
+
+            <div [ngClass]="{'col-12 col-sm-4 col-md-4 col-lg-2': orderItem , 'col-12' : !orderItem}"
+                *ngFor="let user of users$">
+                <div class="card-container">
+                    <button class="card-star no-layout" (click)="addFavorite(user)">
+                        <img [src]="!user.active ? './../../../assets/images/favorite.png' : './../../../assets/images/star.png'"
+                            alt="Favorite icon" />
+                    </button>
+
+                    <a class="card {{ !orderItem  ? 'list' : ''}}" [routerLink]="['/view', user.name]">
+
+                        <div class="card-header itemA">
+                            <div class="card-avatar" [ngStyle]="{'background-image': 'url(' + user.image + ')'}"
+                                alt="User Image"></div>
+                        </div>
+
+                        <div class="card-body itemB">
+                            <h5 class="card-title">{{user?.name}}</h5>
+                            <p *ngIf="orderItem" class="card-text">{{user?.shortName}}</p>
+                        </div>
+
+                        <div class="card-footer itemC" *ngIf="!orderItem">
+                            <h6 class="card-title">Created at: {{user?.created | date :'dd-MM-yyyy'}}</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
