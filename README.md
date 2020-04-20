@@ -8,5 +8,5 @@ Foi usado SCSS, Angular.
 * Troca de imagens por ícones
 * Inclusão dos testes unitários
 * Ajuste de Layout no Mobile da barra de Busca
-
+* Criação de transição entre as páginas
 
